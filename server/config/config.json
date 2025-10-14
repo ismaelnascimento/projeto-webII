@@ -1,10 +1,10 @@
 {
   "development": {
     "username": "root",
-    "password": "reby2206",
-    "database": "tutorial",
+    "password": "ismael123",
+    "database": "projetowebII",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "sqlite"
   },
   "test": {
     "username": "root",
@@ -14,8 +14,6 @@
     "dialect": "mysql"
   },
   "production": {
-
-    
     "username": "root",
     "password": null,
     "database": "database_production",

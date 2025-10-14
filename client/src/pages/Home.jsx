@@ -5,9 +5,9 @@ function Home() {
   const [listOfPosts, setOfPosts] = useState([]);
 
   useEffect(() => {
-    // api.get("/posts").then((response) => {
-    //   setOfPosts(response.data);
-    // })
+    api.get("/posts").then((response) => {
+      setOfPosts(response.data);
+    })
   }, []);
 
   return (
