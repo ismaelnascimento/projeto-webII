@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import api from "../services/api"
+import { useNavigate } from "react-router-dom";
+import PostItem from "../components/PostCard";
 
 function Home() {
+  const navigate = useNavigate();
   const [listOfPosts, setOfPosts] = useState([]);
 
   useEffect(() => {
@@ -11,15 +14,11 @@ function Home() {
   }, []);
 
   return (
-    <div className="App">
-      Hi guys
-      {listOfPosts.map((value, key) => {
+    <div className="w-2/3 gap-12 flex flex-col p-8">
+      <h1>For you</h1>
+      {listOfPosts.map((post) => {
         return (
-          <div className="post">
-            <div className="title"> {value.title} </div>
-            <div className="body">{value.posttext}</div>
-            <div className="footer">{value.username}</div>
-          </div>
+          <PostItem key={post.id} onClick={() => navigate(`/post/${post.id}`)} post={post} />
         );
       })}
     </div>
