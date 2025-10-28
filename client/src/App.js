@@ -1,8 +1,6 @@
-import Home from './pages/Home';
-import CreatePost from './pages/CreatePost';
 import { BrowserRouter, Routes, Route } from "react-router";
 import NavBar from './components/NavBar';
-import Post from './pages/Post';
+import { routes } from './routes/routes';
 
 function App() {
   return (
@@ -11,9 +9,11 @@ function App() {
       <div className="flex flex-row justify-center w-full h-full">
         <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/createPost" element={<CreatePost />} />
-          <Route path="/post/:id" element={<Post />} />
+          {
+            routes?.map((route) => (
+              <Route path={route.to} element={route.page} />
+            ))
+          }
         </Routes>
       </div>
     </BrowserRouter>

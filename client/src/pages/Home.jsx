@@ -15,7 +15,7 @@ function Home() {
 
   return (
     <div className="w-2/3 gap-12 flex flex-col p-8">
-      <h1>For you</h1>
+      <h1 className="caprasimo-font text-4xl">For you</h1>
       {listOfPosts.map((post) => {
         return (
           <PostItem key={post.id} onClick={() => navigate(`/post/${post.id}`)} post={post} />
