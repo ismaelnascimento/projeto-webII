@@ -1,17 +1,37 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const {Comments} = require('../models');
+const { Comments, Users } = require("../models");
+const checkAuth = require("../middleware/auth");
 
 router.get("/:postId", async (req, res) => {
-    const postId = req.params.postId;
-    const comments = await Comments.findAll({where: {PostId: postId}});
-    res.json(comments);
+  const postId = req.params.postId;
+  const comments = await Comments.findAll(
+    { where: { PostId: postId } },
+    {
+      include: [
+        {
+          model: Users,
+          attributes: ["username"],
+        },
+      ],
+    }
+  );
+  res.json(comments);
 });
 
-router.post("/", async (req, res) => {
-    const comment = req.body;
-    await Comments.create(comment);
-    res.json(comment);
+router.post("/", checkAuth, async (req, res) => {
+  const comment = {
+    ...req.body,
+    UserId: req.session.user.id,
+  };
+
+  const newComment = await Comments.create(comment);
+
+  res.json({
+    id: newComment?.dataValues?.id,
+    User: { ...req.session.user, password: null },
+    ...newComment?.dataValues,
+  });
 });
 
 module.exports = router;
