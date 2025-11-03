@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn(true);
         console.log(response);
         setUser(response?.data);
-        navigate("/")
+        navigate("/");
       })
       .catch((e) => {
         console.log(e);
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn(true);
         console.log(response);
         setUser(response?.data);
-        navigate("/")
+        navigate("/");
       })
       .catch((e) => {
         console.log(e);
@@ -43,11 +43,12 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     await api
-      .get("/users/logout")
+      .post("/users/logout")
       .then((response) => {
         console.log(response);
         setIsLoggedIn(false);
         setUser(null);
+        window.location.reload();
       })
       .catch((e) => {
         console.log(e);

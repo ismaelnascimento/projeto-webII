@@ -120,7 +120,7 @@ const Post = () => {
         {loadingComments ? (
           <LoadingItems />
         ) : comments?.length > 0 ? (
-          comments?.map((comment) => (
+          comments?.sort((a, b) => new Date(b?.updatedAt) - new Date(a?.updatedAt))?.map((comment) => (
             <CommentCard key={comment?.id} comment={comment} />
           ))
         ) : (

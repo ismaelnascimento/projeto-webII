@@ -11,6 +11,7 @@ router.get("/", async (req, res) => {
         attributes: ["username"],
       },
     ],
+    order: [["createdAt", "DESC"]],
   });
   res.json(listOfPosts);
 });

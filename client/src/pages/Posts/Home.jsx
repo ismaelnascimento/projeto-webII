@@ -33,7 +33,7 @@ function Home() {
           <NotFoundItems textNotFound={"Aqui vai aparecer os posts"} />
         ) : null}
         {listOfPosts
-          .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
+          .sort((a, b) => new Date(b?.updatedAt) - new Date(a?.updatedAt))
           .map((post) => {
             return (
               <PostCard

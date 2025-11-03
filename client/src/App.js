@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router";
 import NavBar from "./components/NavBar";
 import { routes } from "./routes/routes";
 import { Toaster } from "react-hot-toast";

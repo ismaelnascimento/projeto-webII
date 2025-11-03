@@ -62,7 +62,7 @@ router.post("/register", async (req, res) => {
   res.status(201).json({ ...newUser?.dataValues, password: null });
 });
 
-router.get("/logout", async (req, res) => {
+router.post("/logout", async (req, res) => {
   req.session.destroy();
   res.status(200).json("Logout feito com sucesso");
 });
